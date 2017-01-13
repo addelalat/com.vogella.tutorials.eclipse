@@ -90,4 +90,32 @@ include::res/swt/ExpandlistenerWithPack.java[]
 
 With this code every column of the `Tree` will have the appropriate width, when an `TreeItem` is expaned, so that the contents of the column is not clipped.
 
+=== Increasing the font size
+
+The font size can be increased by simply setting a Font for the underlying SWT Tree.
+
+[source, java]
+----
+	@PostConstruct
+	public void postConstruct(Composite parent) {
+
+		ResourceManager resourceManager = new LocalResourceManager(JFaceResources.getResources(), parent);
+
+		TreeViewer viewer = new TreeViewer(parent);
+		viewer.setContentProvider(new TreeContentProvider());
+		viewer.getTree().setHeaderVisible(true);
+		viewer.getTree().setLinesVisible(true);
+		viewer.getTree().setFont(resourceManager.createFont(FontDescriptor.createFrom("Arial", 32, SWT.ITALIC)));
+
+		TreeViewerColumn viewerColumn = new TreeViewerColumn(viewer, SWT.NONE);
+		viewerColumn.getColumn().setWidth(300);
+		viewerColumn.getColumn().setText("Names");
+		viewerColumn.setLabelProvider(new ColumnLabelProvider());
+
+		viewer.setInput(new String[] { "Simon Scholz", "Lars Vogel", "Dirk Fauth", "Wim Jongman", "Tom Schindl" });
+
+		GridLayoutFactory.fillDefaults().generateLayout(parent);
+	}
+----
+
 
