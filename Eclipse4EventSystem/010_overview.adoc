@@ -2,70 +2,131 @@
 
 === Event based communication
 
-In your application you frequently have the need to communicate
-between application components. This communication should be loosely
-coupled, to remove dependency between the components and to increase
-reuse of these components.
+In your application you frequently have the need to communicate between application components.
+If this communication is loosely coupled, you can develop and test the components in isolation, which improves software qualify.
 		
-This can be archived by the subscriber/ publisher model
-implemented as an event system.
-Software
-components
-can
-register for
-specified events and other
-components
-can
-send
-events out. The event system ensures that all registered components receive
-the event they registered for. .
+This can be archived by the subscriber/ publisher model implemented as an event system.
+Software components can register for certain events.
+Components can send such events. 
+The event system ensures that all registered components receive the event they registered for.
 
 === The event bus of Eclipse
 		
-For this purpose
-the Eclipse platform
-provides a global event
-based
-communication system, called the
-_event bus_.
+For this purpose the Eclipse platform provides a global event based communication system, called the _event bus_.
 
-Any software component which has access to the event system can
-send out arbitrary events as depicted in the following graphic.
+Any software component which has access to the event system can send out arbitrary events as depicted in the following graphic.
 		
 image::eventbroker10.png[Sending out events with an event broker]
 		
-The Eclipse platform will make sure that registered components
-receive the messages. The Eclipse platform uses this event system for
-the
-internal
-communication.
+The Eclipse platform makes sure that registered components receive the messages.
+The Eclipse platform uses this event system for the internal communication.
 
 === Event service
 		
-The Eclipse framework provides the event service for event
-communication.
-This service can be accessed via dependency injection
-based on the
-`IEventBroker`
-interface.
-This communication service can also be used
-to
-communicate
-between your
-own application components.
-		
-The Eclipse
-event service
-is based on the OSGi
-_EventAdmin_
-service but has been wrapped with a simpler API.
+The Eclipse framework provides the event service for event communication.
+This service can be accessed via dependency injection based on the `IEventBroker` interface.
+This communication service can also be used to communicate between your own application components.
+
+[NOTE]
+====
+The Eclipse event service is based on the OSGi _EventAdmin_ service.
+====
 
 === Required plug-ins to use the event service
 		
-The following plug-ins are required to use the
-event service
-functionality:
+The following plug-ins are required to use the event service functionality:
 
 * `org.eclipse.e4.core.services`
 * `org.eclipse.osgi.services`
+
+=== Sending out events
+
+The event service can be injected via dependency injection.
+
+[source,text]
+----
+include::res/eventadmin/inject.txt[]
+----
+
+The following code examples assume that you have a class named _MyEventConstants_.
+This class contains a static final field (constant) to define a string.
+
+The event service allows to notify the registered components.
+This can be done asynchronously or synchronously.
+
+[source,java]
+----
+include::res/eventadmin/sendevent.java[]
+----
+
+You can now send arbitrary Java objects or primitives through the event bus.
+
+[[eventsystem_annotations]]
+=== Registration for events for receiving events
+
+You can use dependency injection to register and respond to events.
+In this case the Eclipse framework automatically removes all event subscriptions when the model class is disposed.
+
+The `@EventTopic` and `@UIEventTopic` annotations tag methods and fields that should be notified on event changes.
+The `@UIEventTopic` ensures the event notification is performed in the user interface thread.
+
+[source,java]
+----
+include::res/events/register.java[]
+----
+
+An object can also register directly an instance of the `org.osgi.service.event.EventHandler` via the `IEventBroker.subscribe()` method. 
+To unsubscribe use the `unsubscribe()` method.
+
+
+[TIP]
+====
+Using dependency injection for subscribing should be preferred compared to the direct subscription.
+This way the framework handles the listener registration and de-registration automatically for you.
+But sometimes it is useful to control when to listening to events, for, example  when an event should only received once.
+====
+
+[source,java]
+----
+include::res/events/LazyLoadingAddon.java[]
+----
+
+=== Which objects should be send out?
+
+The event system allows sending and receiving objects of an arbitrary type.
+Often it is sufficient to send the desired object through an event.
+But it is good practice to use a map like structure for sending events, i.e., to have common interface for events.
+
+=== Subscribing to sub-topics
+
+You can subscribe to specific topics or use wildcards to subscribe to all sub-events.
+Sub-events are separated by `/`.
+The following example code defines string constants including the `TOPIC_TODO_ALLTOPICS` constant.
+This constant can be used to register for all sub-events.
+
+[source, java]
+----
+include::res/events/MyEventConstants.java[]
+----
+
+=== Event system compared to Eclipse context
+
+The `IEventBroker` is a global event bus and is unaware of the `IEclipseContext` hierarchy.
+The `IEventBroker` service supports sending event information without knowing who is receiving it.
+Interested classes can register for events without knowing who is going to provide them.
+This is known as the whiteboard pattern and this pattern supports the creation of very loosely coupled application components.
+
+The disadvantage is that it is a global bus, i.e. there is no scoping of the events.
+Publishers have to ensure they provide enough information in the topic and the send object to allow subscribers to discriminate and decide that the particular event is applicable to a subscriber.
+
+=== Asynchronous processing and the event bus
+
+Your threads can use the `IEventBroker` to send event data.
+The event listeners are called by the framework.
+If the method is annotated with the `UIEventTopic` annotation, it is called in the main thread.
+
+[source,java]
+----
+include::res/event/Example.java[]
+----
 
