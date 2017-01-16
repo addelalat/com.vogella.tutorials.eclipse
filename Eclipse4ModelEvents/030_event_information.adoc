@@ -1,6 +1,5 @@
-== Extract event information
+=== Extract event information
 
-=== Available event tags
 
 The `UIEvents.EventTags` interface define the possible event tags.
 
@@ -8,7 +7,7 @@ image::event_tags.png[EventTags interface with properties of an Event, pdfwidth=
 
 These event tags are explained in the following sections.
 
-=== ATTNAME event tag
+==== ATTNAME event tag
 
 The `ATTNAME` property of the event is the attribute of the model, which has been changed.
 
@@ -32,11 +31,11 @@ NOTE: The `label` 	is an XML attribute and can be found is the source of your _A
 						label"/>
 ----
 
-=== ELEMENT event tag
+==== ELEMENT event tag
 
 The `ELEMENT` event tag in general is the model element, which is concerned in the event.
 
-=== NEW_VALUE and OLD_VALUE event tags
+==== NEW_VALUE and OLD_VALUE event tags
 
 The `NEW_VALUE` and `OLD_VALUE` properties contain the changed value of the element's attribute.
 
@@ -56,7 +55,7 @@ So you actually listen to the changed `selectedElement` attribute value of the `
 
 So it is good to keep the DOM structure of the application model in mind and think of the changes, which can occur within the application model.
 		
-=== TYPE event tag
+==== TYPE event tag
 
 With the `TYPE` event tag you may determine what action has been done to the application model.
 
@@ -70,7 +69,7 @@ image::event_type_convenience.png[Convenience methods for event types.]
 
 The `isADD(Event)` and `isREMOVE(Event)` methods apply for both single and many, e.g., ADD and ADD_MANY)
 
-=== POSITION event tag
+==== POSITION event tag
 
 The _POSITION_ event tag contains the new position of model elements.
 So this property is only set in case a collection of elements is concerned.
@@ -86,7 +85,7 @@ In case you drag and drop a `MPart` within a `MPartStack`, the `MPart` will be r
 
 The details can be seen in the `UIEventPublisher.formatData()` method from the `org.eclipse.e4.ui.internal.workbench` package, where the position on is only the for move, add or remove events.
 
-=== WIDGET event tag
+==== WIDGET event tag
 
 The _WIDGET_ event tag can be used to get the underlying widget, e.g., a `Composite`, of the model element, which is concerned in the event.
 

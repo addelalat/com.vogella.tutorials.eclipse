@@ -1,4 +1,4 @@
-== Exercise: Using model tags and persisted data
+== Optional Exercise: Using model tags and persisted data
 
 In this exercise you are about to learn how to use tags and persisted state data on the application model elements.
 		

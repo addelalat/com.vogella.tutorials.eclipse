@@ -1,23 +1,31 @@
 == Contributing to the application model
 
+=== Modularity support for the application model
+
+(((Application model,Modularity)))
+Eclipse RCP applications are based on the modularity concept of OSGi.
+Functionality can be distributed between plug-ins.
+Such plug-ins can, of course, contribute to the application model.
+
+As you know, the initial structure of the application model is described in file called _Application.e4xmi_.
+Model contributions can be static or dynamic:
+
+* Static contributions are contributed via text files. These extensions are called fragments  or _model fragments_. 
+* Dynamically contributions are contributed via Java classes. These extensions are called _processors_ or _model processors_.
+
+These model contributions are registered with the Eclipse framework  extensions for the `org.eclipse.e4.workbench.model` extension point.
+This extension point is defined in the `org.eclipse.e4.ui.workbench` plug-in.
+
+The model contributions are read during startup and are used to build the runtime application model.
+
+
 === Model fragments
+
 (((Application model,Fragments)))
-A model
-_fragment_
-is a file which typically ends with the
-_.e4xmi_
-extension. It statically specifies model elements and the location in
-the application model
-to which it should be
-contributed.
+A model _fragment_ is a file which typically ends with the _.e4xmi_ extension. 
+It statically specifies model elements and the location in the application model to which it should be contributed.
 		
-For example a
-fragment
-can define that
-it extends a
-certain menu
-with additional menu
-entries.
+For example, a fragment can contribute a new menu containing several new menu entries.
 		
 The e4 tools project provides a wizard and an editor for model
 fragments.
