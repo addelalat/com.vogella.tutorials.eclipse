@@ -51,7 +51,7 @@ image::firstgany50.png[Create a new class selection]
 
 Press the btn:[Finish] button.
 
-This creates a new file and opens the Java _editor_.
+This creates a new file and opens the Java editor.
 Change the class based on the following listing.
 
 [source,java]

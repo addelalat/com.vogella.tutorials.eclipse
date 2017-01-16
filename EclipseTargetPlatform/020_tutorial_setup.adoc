@@ -18,7 +18,7 @@ Use the `com.example.rcp.target` as file name and press the btn:[Finish] button.
 
 image::tutorial_targetdefinition10.png[Define target definition file]
 
-This creates a new file and opens the _Target Definition" editor.
+This creates a new file and opens the _Target Definition_ editor.
 Press the btn:[Add...] button.
 
 image::tutorial_targetdefinition20.png[Add content to target definition file]
