@@ -70,6 +70,22 @@ public class MyTodoServiceImpl implements ITodoService {
 		return deleteTodo.isPresent();
 	}
 
+	@Override
+	public Tag<Tag<Todo>> getRootTag() {
+		return rootTag;
+	}
+	
+
+	@Override
+	public List<Tag<Todo>> getTags(long id) {
+		List<Tag<Todo>> tags = new ArrayList<>();
+	
+		Optional<Todo> findById = findById(id);
+		findById.ifPresent(todo -> findTags(todo, tags, getRootTag()));
+	
+		return tags;
+	}
+
 	// Example data, change if you like
 	private List<Todo> createInitialModel() {
 		List<Todo> list = new ArrayList<>();
@@ -85,6 +101,13 @@ public class MyTodoServiceImpl implements ITodoService {
 		return list;
 	}
 
+	private void createRootTag(List<Todo> todos) {
+		Tag<Todo> eclipseTag = new Tag<>("Eclipse", todos);
+		List<Tag<Todo>> tagList = new ArrayList<>();
+		tagList.add(eclipseTag);
+		rootTag = new Tag<>("root", tagList);
+	}
+
 	private Todo createTodo(String summary, String description) {
 		return new Todo(current.getAndIncrement(), summary, description, false, new Date());
 	}
@@ -93,4 +116,16 @@ public class MyTodoServiceImpl implements ITodoService {
 		return getTodosInternal().stream().filter(t -> t.getId() == id).findAny();
 	}
 
+	private void findTags(Todo todo, List<Tag<Todo>> todosTags, Tag<?> rootTag) {
+		List<?> taggedElements = rootTag.getTaggedElements();
+		for (Object taggedElement : taggedElements) {
+			if (taggedElement instanceof Tag) {
+				findTags(todo, todosTags, (Tag<?>) taggedElement);
+			} else if (todo.equals(taggedElement)) {
+				@SuppressWarnings("unchecked")
+				Tag<Todo> foundTag = (Tag<Todo>) rootTag;
+				todosTags.add(foundTag);
+			}
+		}
+	}
 }

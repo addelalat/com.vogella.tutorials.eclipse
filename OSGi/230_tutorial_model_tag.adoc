@@ -103,6 +103,15 @@ method to the class.
 include::res/datamodel/Copy.java[]
 ----
 
+=== Create a Tag class
+
+The following `Tag` class is used to group `Todo` objects.
+
+[source,java]
+----
+include::res/datamodel/Tag.java[]
+----
+
 === Create the interface for the todo service
 
 Create the following

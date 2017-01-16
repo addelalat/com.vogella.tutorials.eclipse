@@ -13,9 +13,5 @@ public interface ITodoService {
 	Optional<Todo> getTodo(long id);
 
 	boolean deleteTodo(long id);
-
-	Tag<Tag<Todo>> getRootTag();
 	
-	List<Tag<Todo>> getTags(long id);
-
 }
