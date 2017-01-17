@@ -2,55 +2,28 @@
 
 === Target
 
-In this exercise you create a servlet
-which works as a webpage
-counter. This
-servlet keeps track of the
-number of visitors of a
-webpage. The
-servlet persists the number
-of visitors in a text
-file.
+In this exercise you create a servlet which works as a webpage counter. 
+This servlet keeps track of the number of visitors of a webpage. 
+The servlet persists the number of visitors in a text file.
 
 === Create web project
 
-Create a
-new
-_Dynamic Web Project_
-called
-_com.vogella.web.filecounter_
-by selecting
-menu:File[New > Other... > Web > Dynamic Web Project].
+Create a new _Dynamic Web Project_ called _com.vogella.web.filecounter_ by selecting menu:File[New > Other... > Web > Dynamic Web Project].
 
 image::wtp_first_project10.png[]
 
 image::wtp_first_project20.png[]
 
-Press twice the
-btn:[Next]
-button and select the
-_Generate web.xml deployment descriptor_
-on the last page.
+Press twice the btn:[Next] button and select the _Generate web.xml deployment descriptor_ on the last page.
 
 image::wtp_first_project30.png[]
 
-Afterwards press the
-btn:[Finish]
-button.
+Afterwards press the btn:[Finish] button.
 
-If Eclipse asks you, to switch to the
-_Java EE Perspective_
-answer yes.
+If Eclipse asks you, to switch to the _Java EE Perspective_ answer yes.
 
-A new project has been created with the standard structure of
-a
-Java
-web application. The
-_WEB-INF/lib_
-directory holds all
-the JAR files that the Java web
-application
-requires.
+A new project has been created with the standard structure of a Java web application. 
+The _WEB-INF/lib_ directory holds all the JAR files that the Java web application requires.
 
 === Creating Data Access Object
 

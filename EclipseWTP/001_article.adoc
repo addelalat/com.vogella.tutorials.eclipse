@@ -5,18 +5,16 @@
 :icons:
 :imagesdir: ./img
 Lars Vogel (c) 2008, 2016 vogella GmbH
-Version 2.8, 06.07.2016
+Version 2.9, 17.01.2017
 :docinfodir: ../
 :vgwort: EclipseWTP
 
 [abstract]
 Eclipse Web Tool Platform (WTP).
-This tutorial describes the development of servlets with Eclipse WTP. 
-This tutorial is based on Eclipse 4.5 (Mars) and Tomcat 7.0 and JDK 1.8.
+This tutorial describes the development of servlets and Java web application with Eclipse WTP. 
 	
 include::../web/advertisement/afterTableOfContent.adoc[]
 include::005_overview.adoc[]
-include::010_tomcat.adoc[]
 include::../web/advertisement/inBetween01.adoc[]
 include::012_installation.adoc[]
 include::020_configuration.adoc[]
