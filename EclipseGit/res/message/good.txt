@@ -1,6 +1,6 @@
-7455823 Bug 391086 - Search and filter the model editor tree.
-9a84a8a Bug 404207 - Missing DynamicMenuContribution in child selector
-952e014 Bug 404187 - Spelling error in Toolbar/Add child
-71eeea9 Bug 402875 - Importing model elements from legacy RCP
-123672c Bug 403679 - New Application wizard is missing dependencies
-97cdb9a Bug 388635 - Creates an id for handlers 
+7455823 Adds search and filter to the model editor tree
+9a84a8a Missing DynamicMenuContribution in child selector
+952e014 Fixes spelling error in Toolbar/Add child
+71eeea9 Adds option to import model elements from legacy RCP
+123672c New Application wizard is missing dependencies
+97cdb9a Creates an id for handlers 
