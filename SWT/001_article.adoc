@@ -4,8 +4,8 @@
 :experimental:
 :icons:
 :imagesdir: ./img
-Simon Scholz, (c) 2016 vogella GmbH
-Version 0.2, 01.09.2016
+Lars Vogel, Simon Scholz, (c) 2008 - 2017 vogella GmbH
+Version 1.1, 24.01.2017
 :docinfodir: ../
 :vgwort: SWT
 :textselfreference: script
@@ -32,7 +32,7 @@ include::../web/advertisement/inBetween03.adoc[]
 include::100_table.adoc[]
 include::120_tree.adoc[]
 include::130_ctabfolder.adoc[]
-include::../EclipseDragAndDrop/200_exercise_dnd.adoc[]
+include::140_keybindings.adoc[]
 include::210_globalkeylistener.adoc[]
 include::280_swt_snippets.adoc[]
 include::300_nebula_opal.adoc[]

@@ -12,111 +12,68 @@ image::swtwidgetoverview10.png[Overview of the SWT widgets]
 While SWT tries to use native widgets as much as possible, it can not fulfill all common requirements with the native widgets.
 
 Therefore some widgets extend the capabilities of the native platform.
-These are part of the `org.eclipse.swt.custom` package and usually start with the additional prefix `C` to indicate that they are custom widgets, e.g. `CCombo`.
-		
-Compared to the `Combo` class, the `CCombo` class provides the ability to set the height of the widget.
+For example, the `CCombo` class provides the ability to set the height of the widget, which the `Combo` class does not support.
+These are part of the `org.eclipse.swt.custom` package. 
+Such widgets classes usually start with the additional prefix `C` to indicate that they are custom widgets, e.g. `CCombo`.
 		
 Another example is `StyledText`, a class which provides advanced features for displaying text, e.g. drawing a background.
 		
 Widgets from the package `org.eclipse.swt.custom` are implemented in pure Java while widgets from `org.eclipse.swt.widgets` use native code.
 Custom widgets are not supposed to use the internal classes of SWT as these classes may be different on the various platforms.
 Every custom widget must extend the `Composite` or `Canvas` class.
-API compliance is
-guaranteed only for these base classes.
+API compliance is guaranteed only for these base classes.
 		
-If the new
-custom
-widget is supposed to contain other widgets, it
-should extend
-`Composite`.
-Otherwise it should extend the
-`Canvas`
-class.
+If the new custom widget is supposed to contain other widgets, it should extend `Composite`.
+Otherwise it should extend the `Canvas` class.
 		
-In this {textselfreference} the words "widget" and
-"control" are used
-interchangeable for user interface elements.
+In this {textselfreference} the words _widget"_and  _control_ are used interchangeable for user interface elements.
 
 === Memory management
 		
-SWT widgets are not automatically garbage collected. If you release
-an
-SWT
-widget, you have to call its
-`dispose()`
-method. Fortunately if a container is disposed, e.g., a
-`Shell`, this container also releases all its children.
+SWT widgets hold a holder reference to the native widget.
+Such references are not automatically released by the system. 
+If you release an SWT widget, you have to call its `dispose()` method. 
+If a container is disposed, e.g., a `Shell`, this container also releases all its children.
 		
-The automatic release does not work for Color, Cursor, Display,
-Font,
-GC, Image, Printer, Region, Widget and subclasses. All of these
-SWT
-objects need to be manually disposed. JFace provides a simplification
-for this via its
-`LocalResourceManager`.
+The automatic release does not work for Color, Cursor, Display, Font, GC, Image, Printer, Region, Widget and subclasses. 
+All of these SWT objects need to be manually disposed. 
+
+[NOTE]
+====
+JFace provides a way to dispose such objects based on another widget, via the `LocalResourceManager` class.
+====
 
 === Constructing widgets
 		
-SWT
-widgets, except the
-`Shell`
-object,
-are always constructed with a parent widget which
-contains
-them. This
-is similar to AWT and different to Swing, where the
-`add()`
-method is used.
+SWT widgets, except the `Shell` object, are always constructed with a parent widget which contains them. 
+This is similar to AWT and different to Swing, where the `add()` method is used.
 		
-The second parameter of the widget constructor contains the
-_stylebits_.
-Depending on
-the
-provided
-stylebits the widget
-adjusts its look
-and feel
-as well as its
-behavior.
-Each widget documents the supported stylebits
-in its Javadoc.
+The second parameter of the widget constructor contains the _stylebits_.
+Depending on the provided stylebits the widget adjusts its look and feel as well as its behavior.
+Each widget documents the supported stylebits in its Javadoc.
 
-The possible stylebits are predefined in the
-`SWT`
-class.
-If no
-special style is required you can pass
-`SWT.NONE`.
+The possible stylebits are predefined in the `SWT` class.
+If no special style is required, you can pass `SWT.NONE`.
 		
-For example the following code snippet creates a push button.
+For example the following code snippet creates a push button or a checkbox button, dependent on the passed style flags.
 		
 [source,text]
 ----
 include::res/start/push.txt[]
 ----
 		
-The following example creates a checkbox button. The only
-difference is the usage of another stylebit.
 		
 [source,text]
 ----
-include::res/start/check.txt[]
+include::res/start/button.txt[]
 ----
 
 === Basic containers
 		
-The
-`Composite`
-class
-is a container which is capable
-of containing other widgets.
+The `Composite` class is a container which is capable of containing other widgets.
 
-The
-`Group`
-class
-is another container which is able to contain other widgets but
-it additionally draws a border around itself and allows you to set a
-header for the grouped widgets.
+The `Group` class is another container which is able to contain other widgets.
+It it additionally draws a border around itself and allows you to set a  header for the grouped widgets.
 
 === Event Listener
 (((SWT,Event listener)))
@@ -129,24 +86,14 @@ The following code demonstrates the implementation, it uses `SelectionAdapter` w
 include::res/events/selection.java[]
 ----
 
-`FocusListener`
-is another
-examples for such a listener interface.
+`FocusListener` is another examples for such a listener interface.
 
-TIP: The Listener interfaces sometimes contain several methods and
-you
-only want to implement one of them. For this purpose Eclipse
-provides
-empty
-default implementations for these interfaces.
-This
-allows
-you to
-implement only the methods you are
-interested in.
-These
-implementations follow the
-naming convention:
+[TIP]
+====
+The `*Listener` interfaces sometimes contain several methods and you only want to implement one of them. 
+For this purpose Eclipse provides empty default implementations for these interfaces.
+This allows you to implement only the methods you are interested in.
+These implementations follow the naming convention:
 
 menu:_Name_`Listener`[_Name_`Adapter`]
 
@@ -155,7 +102,7 @@ For example, `SelectionListener` has the abstract class `SelectionAdapter` which
 If you want to add a listener to the whole application, you can use the `Display` class. 
 For example, to add a global mouse listener use `addFilter(SWT.MouseMove, listener)`. 
 If you add filters to the `Display` you may interfere with existing listeners. 
-Ensure to test your code accordingly.
+Ensure to test your code accordingly, your filters may interfere with your listeners.
 
 == Colors in SWT
 
@@ -173,5 +120,5 @@ Color blue = display.getSystemColor(SWT.COLOR_BLUE);
 Color listBackground = display.getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 ----
 
-If you create non system colors, you have to call `dispose` on them, if they are not needed anymore.
+If you create non system colors, you have to call `dispose()` on them, if they are not needed anymore.
 

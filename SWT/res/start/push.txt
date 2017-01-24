@@ -1,2 +1,0 @@
-
-new Button(shell, SWT.PUSH);

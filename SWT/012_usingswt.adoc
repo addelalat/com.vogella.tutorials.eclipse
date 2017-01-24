@@ -7,8 +7,6 @@ If you create an Eclipse plug-in and want to use SWT you have to specify a depen
 ----
 include::res/use/MANIFEST.MF[]
 ----
-    
-
 
 === Using SWT in Java projects
 	

@@ -1,42 +1,22 @@
 == Example: Creating a plug-in project with a dependency to SWT
 	
-Create a new plug-in project called
-`com.example.swt.widgets`
-via
-menu:File[New > Other... > Plug-in Development > New Plug-in Project].
+Create a new plug-in project called `com.example.swt.widgets` via menu:File[New > Other... > Plug-in Development > New Plug-in Project].
 	
-Enter the data in the wizard similar to the screenshot below. Make
-sure
-you
-deselect the
-_This plug-in will make contributions to the UI_
-and
-_Generate an activator, a Java class that controls the plug-in's life cycle_
-checkboxes.
+Enter the data in the wizard similar to the screenshot below.
+Make sure you deselect the following options:
+
+* _This plug-in will make contributions to the UI_ 
+* _Generate an activator, a Java class that controls the plug-in's life cycle_
 	
 image::swtplugin10.png[New Plug-in Projec Wizard Page 1]
 	
 image::swtplugin20.png[New Plug-in Projec Wizard Page 2]
 	
-Press the
-btn:[Finish] button on the second page of the wizard.
+Press the btn:[Finish] button on the second page of the wizard.
 	
-Open the
-`MANIFEST.MF`
-file
-in the
-_META-INF_
-folder
-and select the
-_Dependencies_
-tab.
+Open the `MANIFEST.MF` file in the _META-INF_ folder and select the _Dependencies_ tab.
 	
-Press the
-btn:[Add...] button in the
-_Required Plug-ins_
-part and enter
-`org.eclipse.swt`
-as dependency.
+Press the btn:[Add...] button in the _Required Plug-ins_ part and enter `org.eclipse.swt` as dependency.
 	
 image::swtplugin30.png[Adding the dependency to SWT in the Plug-in project]
 	

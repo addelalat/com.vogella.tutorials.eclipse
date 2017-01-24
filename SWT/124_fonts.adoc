@@ -7,7 +7,7 @@ Create the following class.
 include::res/tree/TreeMenuTest.java[]
 ----
 	
-If you run this application a tree will be display with a menu
-attached to it. If you select the menu the text of the selected item
+If you run this application a tree will be display with a menu attached to it. 
+If you select the menu the text of the selected item
 will be printed to the console. 
 	

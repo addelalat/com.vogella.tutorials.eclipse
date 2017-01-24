@@ -1,7 +1,7 @@
 == CTabFolder
 	 
-CTabFolder and CTabItem allow to create the folder experience
-with different tabs.
+`CTabFolder` and `CTabItem` allow to create the folders with tabs.
+Compared with `TabFolder` and `TabItem` they allow to set their background color.
 	
 	
 [source,java]
@@ -9,11 +9,8 @@ with different tabs.
 include::res/ctab/CTabFolderExample.java[]
 ----
 	
-If you run this application you will see several register cards with
-tabs on
-them. The
-`SWT.BOTTOM`
-stylebit on the folder widget, makes the tab appear at the bottom.
+If you run this application you will see several register cards with tabs on them.
+The `SWT.BOTTOM` stylebit on the folder widget, makes the tab appear at the bottom.
 	
 image::ctabfolder10.png[]
 	
