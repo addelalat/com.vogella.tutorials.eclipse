@@ -1,0 +1,3 @@
+new Button(shell, SWT.PUSH);
+
+new Button(shell, SWT.CHECK);

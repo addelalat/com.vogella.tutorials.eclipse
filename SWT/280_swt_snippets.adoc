@@ -3,7 +3,7 @@
 The http://www.eclipse.org/swt/snippets/[SWT Snippets] are examples for stand-alone SWT applications using different kinds of SWT widgets.
 	
 You can copy these snippets and paste them directly into a project with the dependency to SWT inside of the Eclipse IDE.
-The snippet contains a main method which allows it be started .
+The snippet contains a main method which allows it be started.
 
 [TIP]
 ====
@@ -13,4 +13,4 @@ Eclipse automatically creates the Java class based on the content of the clipboa
 
 The http://www.eclipse.org/swt/examples.php[SWT Examples] page provides useful programs that are written in SWT.
 These are typically much larger and more comprehensive than the SWT Snippets.
-	
+
