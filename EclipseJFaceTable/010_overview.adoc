@@ -80,6 +80,7 @@ The following code shows an example that gets the selected element of the viewer
 include::res/snippets/listener.java[]
 ----
 
+[[selecting-table-elements]]
 === Selecting elements of the Table
 
 There are many different ways how an element in a table can be selected.
