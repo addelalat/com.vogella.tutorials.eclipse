@@ -20,16 +20,26 @@ TableViewerColumn colMarried = new TableViewerColumn(viewer, SWT.NONE);
 colMarried.getColumn().setWidth(200);
 colMarried.getColumn().setText("Married");
 colMarried.setLabelProvider(new ColumnLabelProvider() {
-@Override
-public String getText(Object element) {
-  return null;  // no string representation, we only want to display the image
-}
 
-@Override
-public Image getImage(Object element) {
-	if (((Person) element).isMarried()) {
-		return CHECKED;
-	} 
-	return UNCHECKED;
+	private ResourceManager resourceManager = new LocalResourceManager(JFaceResources.getResources());
+	
+	@Override
+	public String getText(Object element) {
+		return null;  // no string representation, we only want to display the image
+	}
+
+	@Override
+	public Image getImage(Object element) {
+		if (((Person) element).isMarried()) {
+			return resourceManager.createImage(CHECKED);
+		}
+		return resourceManager.createImage(UNCHECKED);
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		resourceManager.dispose();
 	}
 });
+

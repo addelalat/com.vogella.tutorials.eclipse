@@ -23,10 +23,8 @@ public class View extends ViewPart {
 
 	private TableViewer viewer;
 	// static fields to hold the images
-	private static final Image CHECKED = Activator.getImageDescriptor(
-			"icons/checked.gif").createImage();
-	private static final Image UNCHECKED = Activator.getImageDescriptor(
-			"icons/unchecked.gif").createImage();
+	private static final ImageDescriptor CHECKED = getImageDescriptor("checked.gif");
+	private static final ImageDescriptor UNCHECKED = getImageDescriptor("unchecked.gif");
 
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout(2, false);
@@ -34,14 +32,12 @@ public class View extends ViewPart {
 		Label searchLabel = new Label(parent, SWT.NONE);
 		searchLabel.setText("Search: ");
 		final Text searchText = new Text(parent, SWT.BORDER | SWT.SEARCH);
-		searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
-				| GridData.HORIZONTAL_ALIGN_FILL));
+		searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL | GridData.HORIZONTAL_ALIGN_FILL));
 		createViewer(parent);
 	}
 
 	private void createViewer(Composite parent) {
-		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
+		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		createColumns(parent, viewer);
 		final Table table = viewer.getTable();
 		table.setHeaderVisible(true);
@@ -125,8 +121,7 @@ public class View extends ViewPart {
 	}
 
 	private TableViewerColumn createTableViewerColumn(String title, int bound, final int colNumber) {
-		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer,
-				SWT.NONE);
+		final TableViewerColumn viewerColumn = new TableViewerColumn(viewer, SWT.NONE);
 		final TableColumn column = viewerColumn.getColumn();
 		column.setText(title);
 		column.setWidth(bound);
