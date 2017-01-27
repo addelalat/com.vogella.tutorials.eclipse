@@ -1,15 +1,15 @@
-== What is Git for Eclipse (EGit)?
+== Git support for Eclipse
 
 (((EGit, see=Eclipse Git)))
 (((Git support in Eclipse,see=Eclipse Git)))
 The Eclipse IDE has excellent support for the Git version control system.
-This support is provided via a set of plug-ins (software component) from the EGit_project.
+This support is provided by the _EGit_ project via a set of plug-ins (software component).
 	
-The _EGit_ functionality is based on the _JGit_ library.
-_JGit_ is a library which implements the _Git_ functionality in Java.
+Eclipse uses the _JGit_ library to perform the Git commands.
+JGit is a library which implements the Git functionality in Java.
 	
-	
-The Eclipse Git user guide is bundled with the Eclipse Git feature, invoke it via menu:Help[Help Contents >  EGit Documentation].
+The Eclipse Git user guide is bundled with the Eclipse Git installation.
+You can invoke it via menu:Help[Help Contents >  EGit Documentation].
 
 .The Eclipse workspace and Git repositories
 [TIP]

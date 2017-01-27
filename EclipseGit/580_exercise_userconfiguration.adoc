@@ -2,17 +2,16 @@
 
 === Validate your Git user settings
 
-In case you have not used Git before on a computer, you need to configure at least your user and email address for the usage of Git.
+Before using Git the first time, you need to configure your user and email address for the usage of Git.
 
 In your Eclipse IDE, select the menu:Window[Preferences>Team>Git>Configuration] entry.
 Ensure that your full name and email is available in the user settings.
 
-The user is stored under the `user.name` key with the full name as value. 
+The user is stored under the `user.name` key with the full name as value.
 If it is not available press the btn:[Add Entry...] button and add it.
 Repeat the procedure for your email address via the  `user.email` key.
 
 image::egitconfig10.png[Configuration of EGit]
-
 
 === Configure Git to rebase during pull operations
 
