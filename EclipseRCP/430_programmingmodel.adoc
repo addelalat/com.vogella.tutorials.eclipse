@@ -1,3 +1,4 @@
+[[eclipse4_annotations]]
 == Using annotations to define behavior
 
 === API definition in a framework
