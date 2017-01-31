@@ -3,7 +3,14 @@
 === Overview
 The Eclipse Resources project provides API to access and modify resources.
 
-=== Example
+=== Example: Create project with lots of files
+
+[source, java]
+----
+include::res/createProject/CreateLargeTestProject.java[]
+----
+
+=== Example: Close all editors for all projects in your workspace
 
 The following example access all projects in your workspace, finds all associated editors and closes them.
 

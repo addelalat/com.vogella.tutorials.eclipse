@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-public class SampleHandler {
+public class CloseAllOpenEditors {
 
 	@Execute
 	public void execute() {
