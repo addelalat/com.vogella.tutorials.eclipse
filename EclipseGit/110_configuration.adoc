@@ -15,24 +15,12 @@ for details.
 
 === Git user settings in Eclipse
 		
-To use Git you must configure your full name and email
-address.
-This information is used to fill the author and
-committer information
-of
-commits
-you create. These Git configuration settings can be adjusted via the Eclipse
-preference
-setting.
-Select
-menu:Window[Preferences > Team > Git > Configuration]
-to see the current configuration and to change it.
+To use Git you must configure your full name and email address.
+This information is used to fill the author and committer information of commits you create.
+These Git configuration settings can be adjusted via the Eclipse preference setting.
+Select menu:Window[Preferences > Team > Git > Configuration] to see the current configuration and to change it.
 		
-You can add entries to your Git configuration by pressing the
-btn:[Add Entries]
-button on the
-_Git Configuration_
-preference page.
+See <<eclipsegit_userconfiguration>> for a detailed description how to configure Git via Eclipse.
 	
 [[egitconfiguration_defaultlocation]]
 === Default clone location

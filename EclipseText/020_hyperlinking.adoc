@@ -20,11 +20,11 @@ Create the following two classes to determine the hyperlink and to react to it.
 
 [source,java]
 ----
-include:res/hyperlink/VogellaHyperlink.java[]
+include::res/hyperlink/VogellaHyperlink.java[]
 ----
 [source,java]
 ----
-include:res/hyperlink/VogelHyperlinkDetector.java[]
+include::res/hyperlink/VogelHyperlinkDetector.java[]
 ----
 
 Start your plug-in and add _vogella_ to one of the text editor, for example the Java editor.

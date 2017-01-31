@@ -1,3 +1,4 @@
+[[eclipsegit_userconfiguration]]
 == Exercise: Git user configuration for the Eclipse IDE
 
 === Validate your Git user settings
@@ -18,6 +19,11 @@ image::egitconfig10.png[Configuration of EGit]
 Unless you have a different opinion about rebase and merge commits, also set the `branch.autosetuprebase` parameter to `always`.
 This is common setting for Git repositories.  
 It avoids merge commits if you pull from a remote repository and have divergent changes and instead rebases your local branch on the remote branch it tracks.
+
+
+=== Configuring the proxy settings
+
+If you are using a proxy server, you can configure it via menu:Windows[Preferences >General > Network Connection].
 
 === Validate the setup
 
