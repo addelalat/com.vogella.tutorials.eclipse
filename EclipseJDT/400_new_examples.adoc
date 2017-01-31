@@ -1,0 +1,234 @@
+== Examples
+
+=== Finding all elements of type MethodDeclaration
+
+[source, java]
+----
+    public static final class MethodDeclarationFinder extends ASTVisitor {
+      private final List <MethodDeclaration> methods = new ArrayList <> ();
+    
+      public static List<MethodDeclaration> perform(ASTNode node) {
+          MethodDeclarationFinder finder = new MethodDeclarationFinder();
+          node.accept(finder);
+          return finder.getMethods();
+      }
+      
+      @Override
+      public boolean visit (final MethodDeclaration method) {
+        methods.add (method);
+        return super.visit(method);
+      }
+
+      /**
+       * @return an immutable list view of the methods discovered by this visitor
+       */
+      public List <MethodDeclaration> getMethods() {
+        return Collections.unmodifiableList(methods);
+      }
+    }
+----
+
+=== Add "Hello, world" statement with JDT
+
+[source, java]
+----
+        String source = String.join("\n", 
+                "public class HelloWorld {",
+                "    public static void main(String[] args) {",
+                          // Insert the following statement.
+                          // System.out.println("Hello, World");
+                "    }",
+                "}");
+
+        ASTParser parser = ASTParser.newParser(AST.JLS8);
+        parser.setSource(source.toCharArray());
+        parser.setKind(ASTParser.K_COMPILATION_UNIT);
+
+        CompilationUnit unit = (CompilationUnit)parser.createAST(new NullProgressMonitor());
+
+        unit.accept(new ASTVisitor() {
+
+            @SuppressWarnings("unchecked")
+            public boolean visit(MethodDeclaration node) {
+                AST ast = node.getAST();
+
+                MethodInvocation methodInvocation = ast.newMethodInvocation();
+
+                // System.out.println("Hello, World")
+                QualifiedName qName = 
+                           ast.newQualifiedName(
+                                    ast.newSimpleName("System"),
+                                    ast.newSimpleName("out"));
+                methodInvocation.setExpression(qName);
+                methodInvocation.setName(ast.newSimpleName("println"));
+
+                StringLiteral literal = ast.newStringLiteral();
+                literal.setLiteralValue("Hello, World");
+                methodInvocation.arguments().add(literal);
+
+                // Append the statement
+                node.getBody().statements().add(ast.newExpressionStatement(methodInvocation));
+
+                return super.visit(node);
+            }
+        });
+----
+
+=== Add "Hello, world" statement with JDT using MethodDeclarationFinder
+
+[source, java]
+----
+        String source = String.join("\n", 
+                "public class HelloWorld {",
+                "    public static void main(String[] args) {",
+                          // Insert the following statement.
+                          // System.out.println("Hello, World");
+                "    }",
+                "}");
+
+        ASTParser parser = ASTParser.newParser(AST.JLS8);
+        parser.setSource(source.toCharArray());
+        parser.setKind(ASTParser.K_COMPILATION_UNIT);
+
+        CompilationUnit unit = (CompilationUnit) parser.createAST(new NullProgressMonitor());
+        AST ast = unit.getAST();
+
+        List<MethodDeclaration> methodDeclarations = MethodDeclarationFinder.perform(unit);
+        for (MethodDeclaration methodDeclaration : methodDeclarations) {
+            MethodInvocation methodInvocation = ast.newMethodInvocation();
+
+            // System.out.println("Hello, World")
+            QualifiedName qName = ast.newQualifiedName(ast.newSimpleName("System"), ast.newSimpleName("out"));
+            methodInvocation.setExpression(qName);
+            methodInvocation.setName(ast.newSimpleName("println"));
+
+            StringLiteral literal = ast.newStringLiteral();
+            literal.setLiteralValue("Hello, World");
+            methodInvocation.arguments().add(literal);
+
+            // Append the statement
+            methodDeclaration.getBody().statements().add(ast.newExpressionStatement(methodInvocation));
+        }
+----
+
+=== Creating a CompilationUnit (AST) from file in workspace
+
+[source, java]
+----
+        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        IPath path = Path.fromOSString("/some/path");
+        IFile file = workspace.getRoot().getFile(path);
+        CompilationUnit compilationUnit =  (CompilationUnit) JavaCore.create(file);
+        ICompilationUnit element =  JavaCore.createCompilationUnitFrom(file);
+        ASTParser parser = ASTParser.newParser(AST.JLS8);
+        parser.setResolveBindings(true);
+        parser.setKind(ASTParser.K_COMPILATION_UNIT);
+        parser.setBindingsRecovery(true);
+        parser.setSource(element);
+        CompilationUnit astRoot = (CompilationUnit) parser.createAST(null);
+----
+
+
+=== Creating CompilationUnit (AST) from file on disk
+
+[source, java]
+----
+        ASTParser parser = ASTParser.newParser(AST.JLS8);
+        parser.setResolveBindings(true);
+        parser.setStatementsRecovery(true);
+        parser.setBindingsRecovery(true);
+        parser.setKind(ASTParser.K_COMPILATION_UNIT);
+        File resource = new File("./tests/resources/Snippet.java");
+        java.nio.file.Path sourcePath = Paths.get(resource.toURI());
+        String sourceString = new String(Files.readAllBytes(sourcePath));
+        char[] source = sourceString.toCharArray();
+        parser.setSource(source);
+        parser.setUnitName(sourcePath.toAbsolutePath().toString());
+        CompilationUnit astRoot = (CompilationUnit) parser.createAST(null);
+----
+
+=== Adding Imports with ASTRewrite
+
+[source, java]
+----
+         Document document = new Document("import java.util.List;\nclass X {}\n");
+         ASTParser parser = ASTParser.newParser(AST.JLS8);
+         parser.setSource(document.get().toCharArray());
+         CompilationUnit cu = (CompilationUnit) parser.createAST(null);
+         AST ast = cu.getAST();
+         ImportDeclaration id = ast.newImportDeclaration();
+         id.setName(ast.newName(new String[] {"java", "util", "Set"}));
+         ASTRewrite rewriter = ASTRewrite.create(ast);
+         ListRewrite lrw = rewriter.getListRewrite(cu, CompilationUnit.IMPORTS_PROPERTY);
+         lrw.insertLast(id, null);
+         TextEdit edits = rewriter.rewriteAST(document, null);
+         edits.apply(document);
+         assert "import java.util.List;\nimport java.util.Set;\nclass X {}\n".equals(document.get());
+----
+
+=== Adding Imports with ImportRewrite
+
+An IFile is an IResource. That means it necessarily belongs to a workspace. 
+You cannot create IFiles for arbitrary files outside the workspace. 
+
+[source, java]
+----
+// TODO(fap): figure out a good way for project setup or extend this example into a small series
+----
+
+=== Writing recorded changes to disk
+
+This example shows how to save the recorded changes in an ImportRewrite and ASTRewrite object.
+
+[source, java]
+----
+    protected void saveChanges(ICompilationUnit cu, IProgressMonitor monitor, final ASTRewrite rewriter,
+            ImportRewrite importRewrite) throws CoreException, JavaModelException, BadLocationException {
+        TextEdit importEdits = importRewrite.rewriteImports(monitor);
+        TextEdit edits = rewriter.rewriteAST();
+        importEdits.addChild(edits);
+
+        // apply the text edits to the compilation unit
+        Document document = new Document(cu.getSource());
+        importEdits.apply(document);
+
+        // save the compilation unit
+        cu.getBuffer().setContents(document.get());
+        cu.save(monitor, true);
+    }
+----
+
+=== Getting an element at a certain Line Number
+
+[source, java]
+----
+protected IMember getIMemberAt(IType type, int lineNumber) throws Exception {
+    IMember member = null;
+    if (type != null) {
+        IJavaElement sourceElement = null;
+        String source = null;
+        if (type.isBinary()) {
+            IClassFile classFile = type.getClassFile();
+            source = classFile.getSource();
+            sourceElement = classFile;
+        } else {
+            ICompilationUnit unit = type.getCompilationUnit();
+            source = unit.getSource();
+            sourceElement = unit;
+        }
+        // translate line number to offset
+        if (source != null) {
+            Document document = new Document(source);
+            IRegion region = document.getLineInformation(lineNumber);
+            if (sourceElement instanceof ICompilationUnit) {
+                member = (IMember) ((ICompilationUnit)sourceElement).getElementAt(region.getOffset());
+            } else {
+                member = (IMember) ((IClassFile)sourceElement).getElementAt(region.getOffset());
+            }
+        }
+    }
+    return member;
+}
+----
+
+// TODO(fap): table with all ASTNodes and their java source equivalent
