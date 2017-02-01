@@ -1,0 +1,5 @@
+== EclipseLink
+
+EclipseLink is a JPA implementation like Hibernate, OpenJPA and others.
+It belongs to the Eclipse foundation and plays well with other Eclipse and OSGi technologies.
+

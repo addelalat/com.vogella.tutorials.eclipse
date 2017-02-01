@@ -1,0 +1,81 @@
+== Exercise - Creating a JPA service implementation
+
+=== Target
+
+Provide a service implementation of the previously created `TodoService`, which makes use of Eclipse Link, a H2 Database Engine and JPA.
+
+=== Creating the service bundle
+
+Create a plugin project called _com.vogella.jpa.service_ with the following bundle dependencies:
+
+* javax.persistence
+* org.h2
+* org.eclipse.persistence.jpa
+
+and package imports
+
+* com.vogella.jpa.model
+* org.osgi.service.component.annotations (as optional dependency)
+
+image::service-dependencies.png[] 
+
+[NOTE]
+====
+Please activate the _Generate descriptors from annotated sources_ preference, so that the component xml file will be created automatically for the `TodoServiceImpl`.
+
+image::ds-preferences.png[] 
+
+====
+
+The `TodoServiceImpl`, which impelements the `TodoService` interface should look like this:
+
+[source, java]
+----
+include::res/TodoServiceImpl.java[]
+----
+
+The _osgi.command.scope_ and _osgi.command.function_ properties in the `@Component` definition allows to call certain methods, e.g., the `printTodos` method, from the command line by using the felix gogo shell.
+
+
+The `@Activate` and `@Deactivate` annotations ensure that the `activateComponent` and `deactivateComponent` methods will be called once the service is activated or deactivated.
+
+In order to persist Todo objects in the H2 database certain properties for the so called _persistence-unit_ have to be specified in a _persistence.xml_ file, which is supposed to be located in the _META-INF_ folder of the projects right besides the _MANIFEST.MF_ file.
+
+The contents of the _persistence.xml_ should look like this:
+
+[source, xml]
+----
+include::res/persistence.xml[]
+----
+
+
+[IMPORTANT]
+====
+Make sure that all the files like _persistence.xml_ and the _com.vogella.jpa.service.TodoServiceImpl.xml_ are also mentioned in the build.properties file.
+====
+
+=== Validate
+
+Go to the _Run Configurations_ and create a new _OSGi Framework_ configuration.
+
+Simply select the _com.vogella.jpa.model_ and _com.vogella.jpa.service_ bundles from the workspace and hit the btn:[Add Required Bundles] button.
+
+When running the new _OSGi Framework_ configuration the OSGi console should appear in the _Console_ view, where you can type the following:
+
+[source, console]
+----
+osgi> test:printTodos
+----
+
+The console should show the following output:
+
+image::console-print-todos.png[] 
+
+
+[NOTE]
+====
+The *test:printTodos* command is related to the properties in the `@Component` annotation in the `TodoServiceImpl` class.
+====
+
+
+

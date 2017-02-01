@@ -1,0 +1,4 @@
+== EclipseLink resources
+
+Sources of this tutorial - https://github.com/SimonScholz/com.vogella.jpa
+

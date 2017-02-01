@@ -1,0 +1,25 @@
+= EclipseLink - Tutorial
+:linkcss:
+:sectnums:
+:experimental:
+:icons:
+:imagesdir: ./img
+Simon Scholz (c) 2017 vogella GmbH
+Version 0.1, 01.02.2017
+:docinfodir: ../
+:vgwort: EclipseLink
+
+[abstract]
+This tutorial contains notes about Eclipse Link.
+				
+include::010_overview.adoc[]
+include::080_exercise_jpa_target.adoc[]
+include::../web/advertisement/inBetween01.adoc[]
+include::090_exercise_jpa_model.adoc[]
+include::100_exercise_jpa_service.adoc[]
+include::../web/advertisement/inBetween02.adoc[]
+include::../support.adoc[]
+include::008_resourceslocal.adoc[]
+include::../copyright.adoc[]	
+
+

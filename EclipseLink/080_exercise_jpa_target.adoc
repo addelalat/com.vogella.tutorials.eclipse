@@ -1,0 +1,28 @@
+== Exercise - Setting up a target definition
+
+=== Target
+
+Get the dependencies, which are necessary to create a EclipseLink JPA application.
+
+=== Creating a target definition project
+
+Create a general project called _com.vogella.jpa.target_.
+
+Inside this project a target definition file called _com.vogella.jpa.target.target_ should be created.
+
+image::target-definition-project.png[]
+
+The following update sites are supposed to be used:
+
+* http://download.eclipse.org/eclipse/updates/4.6
+* http://download.eclipse.org/rt/eclipselink/updates/
+* https://dl.bintray.com/simon-scholz/H2-Database-Engine/ 
+
+image::target-definition-contents.png[]
+
+=== Validate
+
+Press _Set as Target Platform_ once the update sites are resolved and ready.
+In the following exercises the bunldes from these update sites will be used.
+
+

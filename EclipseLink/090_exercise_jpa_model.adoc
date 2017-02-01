@@ -1,0 +1,25 @@
+== Exercise - Creating a JPA model
+
+=== Target
+
+Specify a Todo model together with a service interface, which will be used to get Todo objects.
+
+=== Creating the model bundle
+
+Create a plugin project called _com.vogella.jpa.model_ with _javax.persistence_ as bundle dependency.
+
+Then create a `Todo` and `TodoService` class inside the _com.vogella.jpa.model_ package.
+
+[source, java]
+----
+include::res/Todo.java[]
+----
+
+[source, java]
+----
+include::res/TodoService.java[]
+----
+
+Do not forget to export the _com.vogella.jpa.model_ package, so that it can be used by other plugins.
+
+
