@@ -1,6 +1,13 @@
-== Forms Example
+== Forms examples
 
-=== First Example
+=== Standalone example
+
+[source, java]
+----
+include::res/standalone/SnippetTwistie.java[]
+----
+
+=== First RCP example
 
 Create a new Eclipse RCP project called _de.vogella.rcp.intro.forms_. 
 Use the "RCP Application with a view" as a template. 

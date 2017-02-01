@@ -7,7 +7,7 @@ Eclipse Forms is provided by the `org.eclipse.ui.forms` plug-in and is based on 
 Eclipse Forms can be used in Eclipse based application using the 3.x or the 4.x API.
 The class FormToolkit serves as a factory for the creation of the required user interface elements. 
 This factory adjust the look and feel of the standard SWT and JFace elements to the Forms API.
-Existing UI elements can be enhanced to the form API via the method adapt(Composite).
+Existing UI elements can be enhanced to the form API via the method adapt (Composite).
 
 === Form / ScrolledForm
 
