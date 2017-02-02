@@ -1,36 +1,77 @@
 == Running a stand-alone OSGi server
 
-This chapter will
-show how to run Equinox as a
-OSGi stand-alone runtime.
-In your Eclipse installation directory identify the file
-org.eclipse.osgi*.jar. This file should be in the "plugin" folder.
-Copy this jar file to a new place, e.g., c:\temp\osgi-server. Rename
-the file to "org.eclipse.osgi.jar".
+This chapter will show how to run Equinox as a OSGi stand-alone runtime.
+In your Eclipse installation directory identify the file org.eclipse.osgi*.jar. This file should be in the _plugin_ folder.
+Copy this jar file to a new place, e.g., _c:\temp\osgi-server_.
+Rename the file to "org.eclipse.osgi.jar".
 Start your OSGi server via the following command.
 
-[source,text]
+[source, console]
 ----
 include::res/startOSGi.txt[]
 ----
 
-You can use "install URL" to install a bundle
-from a
-certain URL.
-For example to install your bundle from "c:\temp\bundles" use:
+But running the osgi jar solely is usually not desired.
 
-[source,text]
+Therefore the org.eclipse.osgi bundle needs to be configured by a _config.ini_ file located in an _configuration_ folder.
+
+In order to pass commands to the OSGi runtime from the command line additional bundles are required.
+
+* org.eclipse.equinox.console
+* org.apache.felix.gogo.command
+* org.apache.felix.gogo.runtime
+* org.apache.felix.gogo.shell
+
+To start these bundles with the org.eclipse.osgi bundle the config.ini has to look like this:
+
+[source, config]
+----
+osgi.bundles=org.eclipse.equinox.console@start, org.apache.felix.gogo.command@start, org.apache.felix.gogo.shell@start, org.apache.felix.gogo.runtime@start
+osgi.noShutdown=true
+eclipse.ignoreApp=true
+----
+
+
+[NOTE]
+====
+With this configuration the other bundles have to be located right besides the org.eclipse.osgi bundle.
+
+image::osgi-standalone-dir-structure.png[] 
+
+====
+
+With this setup the OSGi runtime can be started similar to this with the additional `-console` parameter:
+
+[source, console]
+----
+java -jar org.eclipse.osgi_3.11.2.v20161107-1947.jar -console
+----
+
+Once started like this the OSGi console can be used, e.g., by using commands like `ss` to see the available bundles.
+
+image::osgi-standalone-show-bundles-command.png[] 
+
+You can also use "install URL" to install a bundle from a certain URL.
+For example to install your bundle from _c:\temp\bundles_ use:
+
+[source, console]
 ----
 include::res/installbundle.txt[]
 ----
 
-TIP: You probably need to correct the path and the bundle name on
-your system. 
 
-You can start then the bundle with start and the id.
+[TIP]
+====
+You probably need to correct the path and the bundle name on your system. 
+====
+
+You can start the bundle with start and the id.
 
 image::firstbundle70.png[]
 
-TIP:You can remove all installed bundles with the -clean
-parameter.
+[TIP]
+====
+You can remove all installed bundles with the -clean parameter.
+====
+
 
