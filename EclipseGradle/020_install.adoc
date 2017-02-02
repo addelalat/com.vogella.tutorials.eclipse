@@ -1,12 +1,11 @@
 == Install Eclipse Gradle (Buildship) tooling
 
-
 === Installation via the Marketplace
 	
-The easiest way to install the Gradle tooling for Eclipse is by using the Eclipse Marketplace client and search for _Buildship_.
+The easiest way to install the Eclipse Gradle tooling is by using the Marketplace client.
+Search for _Buildship_.
 		
 image::marketplace_buildship.png[Eclipse Gradle installation via the Marketplace]
-
 
 
 === Installation via the Eclipse update manager
@@ -18,7 +17,8 @@ For example, the following URL can be used for the Eclipse 4.6 (Neon) release: h
 
 image::updatesite_dialoggradle.png[Eclipse Gradle installation via the update manager]
 
-			
+[NOTE]
+====			
 The Eclipse Gradle project provides also other updates sites, e.g., for developer builds. 
 See the Buildship download page for details: https://projects.eclipse.org/projects/tools.buildship/downloads
-		
+====	

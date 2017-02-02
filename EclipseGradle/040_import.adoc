@@ -1,6 +1,7 @@
 == Import an existing Gradle project
 	
-Projects can be imported by using the Import wizard via the (menu:File[Import...> Gradle > Gradle Project]) menu entry.
+You can also import existing Gradle projects into Eclipse.
+Select the menu:File[Import...> Gradle > Gradle Project] menu entry for this.
 	
 image::import_wizard.png[Gradle import wizard]
 	

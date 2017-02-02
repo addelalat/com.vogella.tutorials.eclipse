@@ -2,7 +2,7 @@
 
 === Updating Eclipse with the latest changes in the Gradle build file
 
-Eclipse does currently not automatically update the classpath if the `build.gradle` file is updated. 
+Eclipse does not automatically update the classpath, if the `build.gradle` file is updated. 
 Select menu:Gradle[Refresh Gradle Project] from the context menu of the project or from your build.gradle file for that.
 		
 image::refreshgradlebuildpath.png[Refresh Gradle buildpath in Eclipse]
