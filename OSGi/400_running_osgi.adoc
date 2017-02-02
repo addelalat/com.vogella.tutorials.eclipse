@@ -22,7 +22,7 @@ In order to pass commands to the OSGi runtime from the command line additional b
 * org.apache.felix.gogo.runtime
 * org.apache.felix.gogo.shell
 
-To start these bundles with the org.eclipse.osgi bundle the config.ini has to look like this:
+To start these bundles with the org.eclipse.osgi bundle the _config.ini_ file has to look like this:
 
 [source, config]
 ----

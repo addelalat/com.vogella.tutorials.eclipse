@@ -1,6 +1,6 @@
 = OSGi Modularity - Tutorial
 :linkcss:
-:sectnums:                                                          
+:sectnums:
 :experimental:
 :icons:
 :imagesdir: ./img
