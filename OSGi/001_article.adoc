@@ -4,8 +4,8 @@
 :experimental:
 :icons:
 :imagesdir: ./img
-Lars Vogel (c) 2008, 2016 vogella GmbH
-Version 5.1, 06.07.2016
+Lars Vogel, Simon Scholz (c) 2008, 2017 vogella GmbH
+Version 5.2, 02.02.2017
 :docinfodir: ../
 :vgwort: OSGi
 :textselfreference: script

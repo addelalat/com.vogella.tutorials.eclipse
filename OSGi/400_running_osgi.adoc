@@ -8,7 +8,7 @@ Start your OSGi server via the following command.
 
 [source, console]
 ----
-include::res/startOSGi.txt[]
+java -jar org.eclipse.osgi.jar
 ----
 
 But running the osgi jar solely is usually not desired.
@@ -56,7 +56,7 @@ For example to install your bundle from _c:\temp\bundles_ use:
 
 [source, console]
 ----
-include::res/installbundle.txt[]
+install file:c:\temp\bundles\plugins\de.vogella.osgi.firstbundle_1.0.0.jar
 ----
 
 
