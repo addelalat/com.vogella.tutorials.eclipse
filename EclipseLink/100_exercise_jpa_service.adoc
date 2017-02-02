@@ -56,9 +56,11 @@ Make sure that all the files like _persistence.xml_ and the _com.vogella.jpa.ser
 
 === Validate
 
-Go to the _Run Configurations_ and create a new _OSGi Framework_ configuration.
+Go to the _Debug Configurations_ and create a new _OSGi Framework_ configuration.
 
 Simply select the _com.vogella.jpa.model_ and _com.vogella.jpa.service_ bundles from the workspace and hit the btn:[Add Required Bundles] button.
+
+image::OSGi-framework-debug-configurations.png[] 
 
 When running the new _OSGi Framework_ configuration the OSGi console should appear in the _Console_ view, where you can type the following:
 
