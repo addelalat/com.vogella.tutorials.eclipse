@@ -1,8 +1,6 @@
 == Exercise - Setting up a target definition
 
-=== Target
-
-Get the dependencies, which are necessary to create a EclipseLink JPA application.
+In this exercise you define the dependencies, which are necessary to create a EclipseLink JPA application.
 
 === Creating a target definition project
 
@@ -23,6 +21,6 @@ image::target-definition-contents.png[]
 === Validate
 
 Press _Set as Target Platform_ once the update sites are resolved and ready.
-In the following exercises the bunldes from these update sites will be used.
+In the following exercises the bundles from these update sites are used.
 
 

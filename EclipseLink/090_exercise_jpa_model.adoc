@@ -6,7 +6,7 @@ Specify a Todo model together with a service interface, which will be used to ge
 
 === Creating the model bundle
 
-Create a plugin project called _com.vogella.jpa.model_ with _javax.persistence_ as bundle dependency.
+Create a plug-in project called _com.vogella.jpa.model_ with _javax.persistence_ as bundle dependency.
 
 Then create a `Todo` and `TodoService` class inside the _com.vogella.jpa.model_ package.
 
