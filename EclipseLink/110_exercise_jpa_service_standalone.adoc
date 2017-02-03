@@ -1,0 +1,79 @@
+== Exercise - Using the JPA service as standalone application
+
+In the <<exercise_jpa_service_impl>> chapter an _OSGi Framework_ configuration has been used to start the OSGi runtime together with the JPA service from the IDE.
+In this exercise the OSGi runtime will be started outside the Eclipse IDE.
+
+See http://www.vogella.com/tutorials/OSGi/article.html#running-a-stand-alone-osgi-server[OSGi Tutorial] for further information.
+
+=== Creating a product with proper configuration
+
+Usually products are used to create rich client applications, but for the sake of generating the predefined structure and aggregation of necessary bundles a slightly tweaked product can be used.
+
+Create a general project called _com.vogella.jpa.product_ and create a _Product Configuration_ called _com.vogella.jpa.product_.
+
+Switch to the contents tab and add the following bundles to it:
+
+* com.vogella.jpa.model
+* com.vogella.jpa.service
+* org.eclipse.equinox.console
+* org.apache.felix.gogo.command
+* org.apache.felix.gogo.runtime
+* org.apache.felix.gogo.shell
+* org.eclipse.equinox.simpleconfigurator
+* org.eclipse.equinox.ds
+
+After that press the btn:[Add Required Plug-ins] button to add all necessary dependencies.
+
+Create a _config.ini_ file with the following contents in the root folder besides the _com.vogella.jpa.product_ file:
+
+[source, config]
+----
+osgi.framework=file\:plugins/org.eclipse.osgi_3.11.2.v20161107-1947.jar
+equinox.use.ds=true
+osgi.bundles=reference\:file\:plugins/org.eclipse.equinox.simpleconfigurator_1.1.200.v20160504-1450.jar@1\:start
+org.eclipse.equinox.simpleconfigurator.configUrl=file\:org.eclipse.equinox.simpleconfigurator/bundles.info
+osgi.bundles.defaultStartLevel=4
+osgi.noShutdown=true
+eclipse.ignoreApp=true
+----
+
+On the _Configuration_ tab of the product this config.ini file can be referenced.
+
+image::product-configuration.png[] 
+
+Now the product can be exported.
+
+image::product-export.png[] 
+
+A proper _Destination_ has to be chosen and _Generate p2 repository_ is not necessary and _Syncronize before exporting_ won't work because there is no product specifying bundle.
+
+As final step before the exported product can be started the _org.eclipse.osgi_ bundle, e.g., org.eclipse.osgi_3.11.2.v20161107-1947.jar, has to be copied into the root folder of the exported product.
+
+
+[CAUTION]
+====
+Currently custom _config.ini_ files are not considered by the product export.
+See https://bugs.eclipse.org/bugs/show_bug.cgi?id=284732[Bug 284732].
+So please ensure that the exported product's _config.ini_ file looks like specified above.
+====
+
+=== Validate
+
+After making all these changes the folder structure of the exported product should look similar to this: 
+
+image::product-export-folder-structure.png[] 
+
+Now the application can be run from the command line by starting it like this:
+
+[source, console]
+----
+java -jar org.eclipse.osgi_3.11.2.v20161107-1947.jar -console
+----
+
+After executing this the OSGi console should appear.
+
+In order to check whether the JPA service is properly working the `test:printTodos` command can be invoked again.
+
+image::osgi-standalone-jpa-service.png[] 
+
+

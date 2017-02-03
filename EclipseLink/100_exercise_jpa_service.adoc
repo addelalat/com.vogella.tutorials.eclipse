@@ -1,3 +1,4 @@
+[[exercise_jpa_service_impl]]
 == Exercise - Creating a JPA service implementation
 
 === Target
@@ -9,8 +10,8 @@ Provide a service implementation of the previously created `TodoService`, which 
 Create a plugin project called _com.vogella.jpa.service_ with the following bundle dependencies:
 
 * javax.persistence
-* org.h2
 * org.eclipse.persistence.jpa
+* org.h2
 
 and package imports
 
