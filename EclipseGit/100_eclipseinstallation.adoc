@@ -1,27 +1,11 @@
 == Installation of Git support into Eclipse
 	
-Most Eclipse IDE
-downloads
-from Eclipse.org contain
-support for Git
-in their
-default
-configuration. In
-this case no additional installation
-is
-required.
+Most Eclipse IDE distributions from Eclipse.org already contain support for Git.
+In this case no additional installation is required.
 	
-If the Git functionality is missing in your
-Eclipse IDE installation,
-you
-can install it
-via
-the Eclipse installation
-manager. 
-Start this manager
-via the
-menu:Help[Install new Software...]
-menu entry by using the following update site URL:
+Otherwise you can install it via the Eclipse installation manager. 
+Select the menu:Help[Install new Software...] menu entry.
+Enter one of the following update site URLs:
 	
 [source,bourne]
 ----

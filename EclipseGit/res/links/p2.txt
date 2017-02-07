@@ -1,1 +1,5 @@
+# Use this update site to get the latest release
 http://download.eclipse.org/egit/updates
+
+# use this update site to get the night build
+ http://download.eclipse.org/egit/updates-nightly/
