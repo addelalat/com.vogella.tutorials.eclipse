@@ -36,7 +36,7 @@ A refspec allows you to configure which remote branch should be used for remote 
 If you clonee a Git repository managed by a Gerrit server, this push url is already correctly configured in most cases.
 
 The icon for repository configured to be used for Gerrit uses a green icon. 
-Also Gerrit specific commands are added to the repository's context menu, e.g.,_Push to Gerrit..._and_Fetch from Gerrit..._).
+Also Gerrit specific commands are added to the repository's context menu, e.g., _Push to Gerrit..._ and _Fetch from Gerrit..._ ).
 In addition, the repository is configured to always add a Change-ID to the commit message.
 In th following screenshot the repositories configured for Gerrit are highlighted. 
 The `eclipse.jdt` repository in this screenshot is not configured for Gerrit.
