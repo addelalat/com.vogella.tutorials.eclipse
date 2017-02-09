@@ -1,4 +1,4 @@
-[[eclipse_ide_spies]
+[[eclipse_ide_spies]]
 == Identifying who contributes user interface components
 
 === Plug-in Spy for UI parts
