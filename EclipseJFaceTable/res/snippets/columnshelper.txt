@@ -2,8 +2,8 @@
 // fields for your class
 // assumes that you have these two icons
 // in the "icons" folder
-private final Image CHECKED = getImageDescriptor("checked.gif");
-private final Image UNCHECKED = getImageDescriptor("unchecked.gif");
+private final ImageDescriptor CHECKED = getImageDescriptor("checked.gif");
+private final ImageDescriptor UNCHECKED = getImageDescriptor("unchecked.gif");
 
 
 // more code...
