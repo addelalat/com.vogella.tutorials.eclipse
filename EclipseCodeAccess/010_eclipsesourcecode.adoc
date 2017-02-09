@@ -1,4 +1,0 @@
-== Accessing the Eclipse source code
-
-This description helps you to access the underlying structure and source code of an Eclipse application.
-

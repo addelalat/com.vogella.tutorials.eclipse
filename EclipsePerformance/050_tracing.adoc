@@ -97,4 +97,15 @@ the
 `org.eclipse.ui.trace.traceComponents`. See
 `TracingPreferencePage`
 for the implementation of this.
-		
+
+=== Example:  for key bindings
+
+The tracing functionality of Eclipse allows to you trace which command is associated with a certain key binding. 
+The following listing contains the trace options to enable that.
+
+[source, properties]
+----
+include::res/tracing/keybinding.txt[]
+----
+
+
