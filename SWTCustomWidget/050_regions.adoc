@@ -6,7 +6,7 @@ In order to apply a custom shape for a `Control` the `Region` class can be used.
 
 === Regions are Resources
 
-A `Region` is derived from `org.eclipse.swt.graphics.Resource`, which means that it *is necessary* to dispose them, once they are not needed any more.
+A `Region` is derived from `org.eclipse.swt.graphics.Resource`, which means that it *is necessary* to dispose them, once not needed any more.
 
 [source, java]
 ----

@@ -22,10 +22,8 @@ public class ComputeSizeWidget extends Composite {
 		// value so that the line would not be bigger than 30x2.
 		// In case the SWT.DEFAULT flag for the hints is used, we simply stick to
 		// the LINE_WIDTH and LINE_HEIGHT.
-		int width = wHint != SWT.DEFAULT ? Math.min(wHint, LINE_WIDTH)
-				: LINE_WIDTH;
-		int height = hHint != SWT.DEFAULT ? Math.min(hHint, LINE_HEIGHT)
-				: LINE_HEIGHT;
+		int width = wHint != SWT.DEFAULT ? Math.min(wHint, LINE_WIDTH) : LINE_WIDTH;
+		int height = hHint != SWT.DEFAULT ? Math.min(hHint, LINE_HEIGHT) : LINE_HEIGHT;
 
 		return new Point(width, height);
 	}
