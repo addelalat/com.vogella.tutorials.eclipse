@@ -53,4 +53,6 @@ image::eclipsedash20.png[Eclipse project dashboard]
 === User interface guidelines
 		
 Eclipse has a description for its user interface guidelines, it is a bit outdated but still gives an good overview.
-See https://wiki.eclipse.org/User_Interface_Guidelines[Eclpise UI guidelines Wiki].
+See https://wiki.eclipse.org/User_Interface_Guidelines[Eclipse UI guidelines Wiki].
+
+

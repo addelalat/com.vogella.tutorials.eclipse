@@ -137,3 +137,6 @@ List of options available at https://wiki.eclipse.org/Platform-releng/Platform_B
 The Fedora project has removed some non Eclipse IDE related plug-ins to speed up the build process. 
 See the http://pkgs.fedoraproject.org/cgit/eclipse.git/tree/eclipse.spec#n366[Fedora build script].
 
+See also https://wiki.eclipse.org/SWT/Devel/Gtk/Dev_guide#Rebuilding_gtk_.2A.so_binaries[GTK building the natives].
+
+https://wiki.eclipse.org/SWT/Developer_Guide
