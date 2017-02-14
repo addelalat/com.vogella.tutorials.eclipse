@@ -1,24 +1,11 @@
 == Using layout managers in SWT
 
 === The role of a layout manager
+
 (((SWT,Layout manager)))
-A layout manager is
-responsible for arranging the user interface
-components
-of a
-container, e.g., a
-`Composite`,
-on
-the
-screen.
-SWT
-offers several standard layout managers. The
-following table gives an overview of them. It is sorted
-by complexity
-of the layout manager,
-i.e. the simplest layout manager is listed
-first and the most complex one as the
-last entry.
+A layout manager is responsible for arranging the widgets of a container, e.g., a `Composite`.
+SWT offers several standard layout managers. 
+The following table gives an overview of them. 
 
 .Layout Manager
 [cols="1,2",options="header"]
@@ -49,8 +36,7 @@ on.
 grid.
 
 |FormLayout
-|Arranges the widgets with the help of the associated
-attachments.
+|Arranges the widgets with the help of the associated attachments.
 
 |===
 
@@ -144,19 +130,13 @@ element.
 
 === GridLayout
 
-`GridLayout`
-allows you to arrange the user interface components in a Grid with a
-certain number of columns. It is also possible to
-specify column and
-row
-spanning.
+==== Usage
+`GridLayout` allows you to arrange the user interface components in a Grid with a certain number of columns.
+It is also possible to specify column and row spanning.
 
-You can use
-`new GridData()`
-and assign properties to the new object. Alternatively you can use
-one of its richer constructors to define certain
-attributes during
-construction. For example via the following constructor.
+You can use `new GridData()` and assign properties to the new object.
+Alternatively, you can use one of its richer constructors to define certain attributes during construction. 
+For example, via the following constructor:
 
 [source,java]
 ----
@@ -228,47 +208,39 @@ up.
 
 |===
 
-If the widget has the
-`grabExcessHorizontalSpace`
-attribute set to true, it will grab available space in its container.
-`SWT.FILL`
-tells the widget to fill the available space.
-Therefore,
-`grabExcessHorizontalSpace`
-and
-`SWT.FILL`
-are often used together.
+If the widget has the `grabExcessHorizontalSpace` attribute set to true, it will grab available space in its container.
+`SWT.FILL` tells the widget to fill the available space.
+Therefore, `grabExcessHorizontalSpace` and `SWT.FILL` are often used together.
 
-TIP: The `GridDataFactory` class provides static methods for creating `GridData` objects. 
-The Javadoc of this class contains several examples for it.
+==== Using GridDataFactory
 
-=== Using GridDataFactory
-
-The
-`GridDataFactory`
-class can be used to create
-`GridData`
-objects. This class provides a convenient shorthand for creating and
-initializing GridData. The following listing
-demonstrates its usage
-and compares it with the direct usage of
-`GridData`.
+The `GridDataFactory` class can be used to create `GridData` objects. 
+This class provides a convenient shorthand for creating and initializing GridData. 
+The following listing demonstrates its usage and compares it with the direct usage of `GridData`.
 
 [source,java]
 ----
 include::res/gridlayout/GirdDataFactory.java[]
 ----
 
-Unfortunately the
-_SWT Designer_
-does currently not support
-`GridDataFactory`, hence the following examples avoid using them.
+The Javadoc of this class contains several examples for it.
+
+[NOTE]
+====
+Unfortunately the _SWT Designer  does currently not support `GridDataFactory`, hence the following examples avoid using them.
+====
+
+=== FormLayout
+
+`FormLayout` works by creating `FormAttachments` for each side of the widget, and storing them in the layout data. 
+The specific side of the widget is attached either to a position in the parent `Composite` or to another widget within the layout. 
+This allows you to control on a very detailed level the placement of individual widgets within the layout.
 
 === Triggering a re-layout of a Composite
 
 As of Eclipse 4.7 you should use the `requestLayout()` method call on the `Composite` class, as this triggers an asynchronous layout call.
 
-The `Composite` widget defines also the `layout` method which triggers a synchronous layout and should be avoided.. 
+The `Composite` widget defines also the `layout` method which triggers a synchronous layout and should be avoided.
 This method accepts also child widgets and flags. 
 These flags should rarely be used in client code.
 
@@ -283,16 +255,8 @@ flag.
 If it's actually doing something, it could be replaced by a series of calls to requestLayout.
 
 |SWT.CHANGED
-|The flag causes
-subsequent calls to
-Layout.layout(...) to receive true for the second argument, which
-forces
-the layout to recursively
-flush all caches.
-There's no good reason to ever do this. If something changed, the
-layout should have been notified
-via
-Layout.flushCache(control) (which is what happens when you invoke
+|The flag causes subsequent calls to Layout.layout(...) to receive true for the second argument, which forces the layout to recursively flush all caches.
+There's no good reason to ever do this.  If something changed, the layout should have been notified via Layout.flushCache(control) (which is what happens when you invoke
 requestLayout). This is either a brute-force
 workaround for a stale layout bug or was just unnecessary.
 I can't
