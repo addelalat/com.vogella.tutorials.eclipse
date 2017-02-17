@@ -1,5 +1,4 @@
-
-package de.vogella.swt.widgets;
+package com.vogella.swt.widgets.ctabfolder;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;

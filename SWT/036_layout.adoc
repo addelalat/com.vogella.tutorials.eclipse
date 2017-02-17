@@ -1,4 +1,26 @@
-== Using layout managers in SWT
+== Positioning widgets
+
+=== Manually placing widgets on a Composite
+
+Controls must be placed in their container. 
+You can manually define their position and size with the `setBounds` method.
+This method allows to define the starting position and the width and height.
+The coordinates start in the top-left corner of the containing `Composite`.
+
+image::swt_drawing10.png[SWT widget positioning] 
+
+[source, java]
+----
+include::res/positioning/SWTLayoutPositioning.java[]
+----
+
+
+
+[NOTE]
+====
+`setBounds` defines both position and size.
+You can also use `setLocation` and `setSize` to define the position.
+====
 
 === The role of a layout manager
 
@@ -79,42 +101,15 @@ element has a unique layout data object.
 
 === FillLayout
 
-`FillLayout`
-divides the available space provided by the container equally to all
-widgets and can be set to
-arrange the widgets
-either
-horizontally (
-`SWT.HORIZONTAL`
-)
-or vertically (
-`SWT.VERTICAL`
-). It also allows you to set the space between the widgets (attribute
-`spacing`
-) and the margins of the widgets to the container via the
-`marginWidth`
-and
-`marginHeight`
-attributes.
+`FillLayout` divides the available space provided by the container equally to all widgets.
+It can arrange the widgets either horizontally (`SWT.HORIZONTAL`) or vertically (`SWT.VERTICAL`). 
+It also allows you to set the space between the widgets (attribute `spacing` ) and the margins of the widgets to the container via the `marginWidth` and `marginHeight` attributes.
 
 === RowLayout
 
-`RowLayout`
-orders UI components in a row (
-`SWT.HORIZONTAL`
-) or in a
-column (
-`SWT.VERTICAL`
-).
-`RowLayout`
-supports wrapping of
-fields (field
-`wrap`
-) by default. You can define if widgets should have their
-preferred
-size
-(default)
-or if they should grab the available
+`RowLayout` orders UI components in a row (`SWT.HORIZONTAL`) or in a column (`SWT.VERTICAL`).
+`RowLayout` supports wrapping of fields (field `wrap`) by default.
+You can define if widgets should have their preferred size (default) or if they should grab the available
 space
 via the field
 `pack`. It is also possible to set margins at the top, bottom, left and
@@ -235,6 +230,8 @@ Unfortunately the _SWT Designer  does currently not support `GridDataFactory`, h
 `FormLayout` works by creating `FormAttachments` for each side of the widget, and storing them in the layout data. 
 The specific side of the widget is attached either to a position in the parent `Composite` or to another widget within the layout. 
 This allows you to control on a very detailed level the placement of individual widgets within the layout.
+
+
 
 === Triggering a re-layout of a Composite
 
