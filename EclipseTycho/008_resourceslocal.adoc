@@ -24,3 +24,5 @@ http://wiki.eclipse.org/Tycho/Target_Platform[Tycho Target Platform]
 
 https://wiki.eclipse.org/Tycho/How_Tos/Dependency_on_pom-first_artifacts[Tycho pom first artifacts] 
 
+http://stackoverflow.com/questions/25190212/an-unexpected-error-occured-return-code-1-when-trying-to-launch-swtbot-test[Stackoverflow - Error starting application with tycho]
+
