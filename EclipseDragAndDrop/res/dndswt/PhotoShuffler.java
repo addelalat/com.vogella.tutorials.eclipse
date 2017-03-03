@@ -27,9 +27,6 @@ import org.eclipse.swt.widgets.Shell;
 public class PhotoShuffler {
 
 	public static void main(String[] args) {
-		String[] imgNames = new String[] { "ic_action_cake.png", "ic_action_clock.png", "ic_action_smiley.png",
-				"ic_action_star.png" };
-
 		// setup the SWT window
 		Display display = new Display();
 		final Shell shell = new Shell(display);
