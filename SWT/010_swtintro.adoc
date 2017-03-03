@@ -41,7 +41,7 @@ It also controls the communication between the user interface thread and other t
 `Display` is therefore the base for all SWT capabilities.
 		
 Every SWT application requires at least one `Display` and one or more `Shell` instances. 
-The main `Shell` gets  as a default parameter, a `Display` as a constructor argument. 
+The main `Shell` takes a `Display` as a constructor argument. 
 Each `Shell` is constructed with a `Display`. 
 If none is provided during construction it will use either the `Display` which is currently used or a default one.
 
@@ -53,12 +53,12 @@ SWT does not provide its own event loop.
 This means that the programmer explicitly starts and checks the event loop to update the user interface. 
 The loop executes the `readAndDispatch()` method which reads events from the native OS event queue and dispatches them to the SWT event system. 
 The loop is executed until the main shell is closed. 
-If this loop would be left out, the application would terminate immediately
+If this loop would be left out, the application would terminate immediately.
 		
 For example, the following creates a SWT application which creates and executes the event loop.
 
 		
-[source,text]
+[source, java]
 ----
 include::res/start/loop.txt[]
 ----

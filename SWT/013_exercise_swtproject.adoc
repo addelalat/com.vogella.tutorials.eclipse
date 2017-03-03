@@ -4,13 +4,13 @@
 Create a new Java project called _com.examle.swt.widgets_. 
 Create a new `lib` folder in your project.
 
-Download the SWT library from the http://www.eclipse.org/swt[SWT website] and extract the archive. 
+Download the SWT library from the http://download.eclipse.org/eclipse/downloads/[Eclipse download page].
+Navigate to the download page of the latest stable Eclipse release and scroll down to the SWT binaries.
 Ensure that you download the correct version for your Java and OS version.
 If you use a 32 bit Java version you need also to use the 32 bit version of SWT.
-Use the _more_ link to find the correct version (32 bit vs. 64 bit).
 
-
-image::swt-download10.png[SWT Download Page]
+image::swt-download09.png[Eclipse Download Page - Latest Release]
+image::swt-download10.png[SWT Binaries]
 
 Copy the `swt.jar` library and the `src.zip` file to the `lib` folder in your project.
 

@@ -18,8 +18,9 @@ public class FirstSWTApplication {
         //TODO add some widgets to the Shell
         shell.open();
         while (!shell.isDisposed()) {
-            if (!display.readAndDispatch())
+            if (!display.readAndDispatch()) {
                 display.sleep();
+            }
         }
         display.dispose();
     }

@@ -66,7 +66,7 @@ If you assign a layout manager to a control you do not have to call
 `pack`
 anymore. The only case in which you need to call
 `pack`
-is if control has no layout.
+is if a control has no layout.
 
 === Layout Data
 
@@ -82,7 +82,7 @@ should take
 two columns in a
 `GridLayout`.
 
-[source,text]
+[source, java]
 ----
 include::res/gridlayout/gridDataExample.txt[]
 ----
