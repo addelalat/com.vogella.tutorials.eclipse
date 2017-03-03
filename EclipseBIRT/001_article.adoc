@@ -4,16 +4,16 @@
 :experimental:
 :icons:
 :imagesdir: ./img
-Lars Vogel, Hendrik Still (c) 2008, 2016 vogella GmbH
-Version 1.3, 06.07.2016
+Lars Vogel, Hendrik Still (c) 2008, 2017 vogella GmbH
+Version 1.4, 24.002.2017
 :docinfodir: ../
 :vgwort: EclipseBIRT
 
 [abstract]
 Eclipse Birt.
 This tutorial describes how to use Eclipse BIRT for reporting on simple Java Objects (POJO's). 
-The tutorial explains also how to deploy the resulting BIRT report into a
-webcontainer (Tomcat) and how to use it in an Eclipse RCP application. Eclipse 3.7 (Indigo) is used for this tutorial.
+The tutorial explains also how to deploy the resulting BIRT report into a webcontainer (Tomcat) and how to use it in an Eclipse RCP application. 
+Eclipse 4.6 (Indigo) is used for this tutorial.
 		
 include::../web/advertisement/afterTableOfContent.adoc[]
 include::10_birtintro.adoc[]
