@@ -4,15 +4,14 @@
 :experimental:
 :icons:
 :imagesdir: ./img
-Simon Scholz, (c) 2016, 2017 vogella GmbH
-Version 1.4, 29.05.2016
+Simon Scholz, Lars Vogel, (c) 2016, 2017 vogella GmbH
+Version 1.5, 03.03.2017
 :docinfodir: ../
 :vgwort: EclipseDragAndDrop
 
 [abstract]
 This tutorial describes the usage of drag and drop in the Eclipse framework.
-The article assumes that you are familiar with Eclipse plug-in or Eclipse RCP development. 
-This tutorial is based on Eclipse 4.6 (Eclipse Neon).
+The article assumes that you are familiar with SWT and Eclipse plug-in or Eclipse RCP development. 
 				
 include::../web/advertisement/afterTableOfContent.adoc[]
 include::010_overview.adoc[]

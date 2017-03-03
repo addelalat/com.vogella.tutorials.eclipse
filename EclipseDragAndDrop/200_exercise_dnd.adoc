@@ -1,5 +1,10 @@
 == Exercise: Drag and Drop in SWT
 
+The methods `moveAbove` and `moveBelow` provide the option to re-arrange widgets within a layout.
+The following example demonstrates the usage of drag and drop to re-arrange widgets in a layout.
+It assumes that you have created several png file in an `images` folder of the project.
+
+
 Create the following class. 
 	
 [source,java]
@@ -7,17 +12,5 @@ Create the following class.
 include::res/dndswt/PhotoShuffler.java[]
 ----
 
-Create the following DragSource and DragTarget Listener.
-
-[source,java]
-----
-include::res/dndswt/MyDropTargetListener.java[]
-----
-	
-[source,java]
-----
-include::res/dndswt/MyDragSourceListener.java[]
-----
-
-
+image::photodnd[photodnd] 
 	
