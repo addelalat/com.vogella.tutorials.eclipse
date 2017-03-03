@@ -54,33 +54,26 @@ fill and so
 on.
 
 |GridLayout
-|Arranges widgets in a
-grid.
+|Arranges widgets in a grid.
 
 |FormLayout
 |Arranges the widgets with the help of the associated attachments.
 
+|StackLayout
+|This Layout stacks all the controls one on top of the other and resizes all controls to have the same size and location.
+The control specified in `topControl` is visible and all other controls are not visible.
+
 |===
 
-If you assign a layout manager to a control you do not have to call
-`pack`
-anymore. The only case in which you need to call
-`pack`
-is if a control has no layout.
+If you assign a layout manager to a control you do not have to call `pack` anymore. 
+The only case in which you need to call `pack`, is if a control has no layout.
 
 === Layout Data
 
-Each SWT widget can have a layout specific settings class assigned to
-it, e.g.
-`GridData`
-for a
-`GridLayout`. This allows the developer to control the arrangement of the widgets
-within the layout.
+Each SWT widget can have a layout specific settings class assigned to it, e.g., `GridData` for a `GridLayout`. 
+This allows the developer to control the arrangement of the widgets dwithin the layout.
 
-In the following example you specify that a certain widget
-should take
-two columns in a
-`GridLayout`.
+In the following example you specify that a certain widget should take two columns in a  `GridLayout`.
 
 [source, java]
 ----
@@ -89,15 +82,10 @@ include::res/gridlayout/gridDataExample.txt[]
 
 WARNING: The used layout data must match the layout manager, otherwise an exception is thrown at runtime.
 
-The layout will be automatically calculated when the container is
-displayed. You can tell a
-`Composite`
-to recalculate the layout with the
-`composite.layout()`
-method.
+The layout will be automatically calculated when the container is displayed. 
+You can tell a `Composite` to recalculate its layout with the `composite.requestLayout()` method.
 
-WARNING: Layout data objects should not be reused as the layout manager expects that every user interface
-element has a unique layout data object.
+WARNING: Layout data objects should not be reused as the layout manager expects that every user interface element has a unique layout data object.
 
 === FillLayout
 
@@ -109,19 +97,11 @@ It also allows you to set the space between the widgets (attribute `spacing` ) a
 
 `RowLayout` orders UI components in a row (`SWT.HORIZONTAL`) or in a column (`SWT.VERTICAL`).
 `RowLayout` supports wrapping of fields (field `wrap`) by default.
-You can define if widgets should have their preferred size (default) or if they should grab the available
-space
-via the field
-`pack`. It is also possible to set margins at the top, bottom, left and
-right. If you
-set
-`justify`, the widgets will be spread through
-the
-available space.
+Via the `pack` field, you can define if widgets have their preferred size (default) or if they  grab the available  space. 
+It is also possible to set margins at the top, bottom, left and right.
+If you set `justify`, the widgets will be spread through the available space.
 
-Each element can define its height and width via a
-`RowData`
-element.
+Each element can define its height and width via a `RowData` element.
 
 === GridLayout
 
@@ -231,7 +211,21 @@ Unfortunately the _SWT Designer  does currently not support `GridDataFactory`, h
 The specific side of the widget is attached either to a position in the parent `Composite` or to another widget within the layout. 
 This allows you to control on a very detailed level the placement of individual widgets within the layout.
 
+=== Adding and removing children from a Composite
 
+You can add children at runtime to a `Composite`.
+By default, they are placed after the existing controls but you can reposition them via the `moveBefore` and `moveBelow` method calls.
+
+To  remove a child from a layout, call its `dispose` method. 
+To update parent composite after you removed or added children, call its `requestLayout` method.
+
+The following is an example how to dynamically create new rows in a existing layout and how to remove these rows.
+
+
+[source, java]
+----
+include::res/positioning/SWTDynamicLayoutChanges.java[]
+----
 
 === Triggering a re-layout of a Composite
 

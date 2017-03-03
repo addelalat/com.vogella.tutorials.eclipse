@@ -10,3 +10,4 @@ The following screenshot shows a widgets for displaying two lists.
 	
 image::opalexample10.png[Opal  widgets]
 
+This Github project also provides several custom widgets: https://github.com/Haixing-Hu/swt-widgets/
