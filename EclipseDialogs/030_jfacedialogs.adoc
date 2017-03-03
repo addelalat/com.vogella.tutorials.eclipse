@@ -17,6 +17,14 @@ The following code demonstrates the usage of these static methods.
 include::res/jface/messageDialogStandardjava[]
 ----
 
+The resulting dialogs are depicted in the following screenshots.
+
+image::jface_message_info.png[]
+image::jface_message_error.png[]
+image::jface_message_confirm.png[]
+image::jface_message_warning.png[]
+image::jface_message_question.png[]   
+
 === Using the JFace MessageDialog class directly
 
 The `MessageDialog` class also allows the customization of the buttons in the dialog.
