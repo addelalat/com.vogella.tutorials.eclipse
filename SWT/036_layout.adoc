@@ -202,7 +202,7 @@ The Javadoc of this class contains several examples for it.
 
 [NOTE]
 ====
-Unfortunately the _SWT Designer  does currently not support `GridDataFactory`, hence the following examples avoid using them.
+Unfortunately the _SWT Designer_  does currently not support `GridDataFactory`, hence the following examples avoid using them.
 ====
 
 === FormLayout

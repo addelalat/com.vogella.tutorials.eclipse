@@ -21,6 +21,7 @@ public class CTabFolderExample {
                 SWT.FILL, true, true,
                 2, 1);
         folder.setLayoutData(data);
+        folder.setSelectionForeground(display.getSystemColor(SWT.COLOR_RED));
         CTabItem cTabItem1 = new CTabItem(folder, SWT.NONE);
         cTabItem1.setText("Tab1");
         CTabItem cTabItem2 = new CTabItem(folder, SWT.NONE);
